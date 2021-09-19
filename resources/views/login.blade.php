@@ -23,6 +23,13 @@
 		    </div>
 			@endif
 
+	    @if ($message = Session::get('success'))
+        <div class="alert alert-success alert-block mb-3">
+            <button type="button" class="close" data-dismiss="alert">×</button>    
+            {{ $message }}
+        </div>
+      @endif
+
       <input type="text" id="login" class="fadeIn second" name="email" placeholder="Email">
       @if ($errors->has('email'))<br><small class="text-danger" role="alert">{{ $errors->first('email') }}</small>@endif
       <input type="password" id="password" class="fadeIn third" name="password" placeholder="password">
@@ -35,7 +42,7 @@
       <br>
       <a class="underlineHover" href="{{ route('register') }}">Register</a>
       <br>
-      <a class="underlineHover" href="#">Forgot Password?</a>
+      <a class="underlineHover" href="{{ route('forgotpassword') }}">Forgot Password?</a>
     </div>
 
   </div>

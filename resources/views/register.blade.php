@@ -28,7 +28,9 @@
 
     <!-- Remind Passowrd -->
     <div id="formFooter">
-      <a class="underlineHover" href="#">Forgot Password?</a>
+      <a class="underlineHover" href="{{ route('forgotpassword') }}">Forgot Password?</a>
+      <br>
+      <a class="underlineHover" href="{{ route('login') }}">Login</a>
     </div>
 
   </div>
