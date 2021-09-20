@@ -4,6 +4,8 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Auth;
+use App\Models\User;
 
 class UserAdmin
 {
@@ -16,6 +18,11 @@ class UserAdmin
      */
     public function handle(Request $request, Closure $next)
     {
-        return $next($request);
+        $auth = auth()->user();
+        if($auth && $auth->role_id==1){
+            return $next($request);
+        }else{
+            return redirect()->route('login');
+        }
     }
 }

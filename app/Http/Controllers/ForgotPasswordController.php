@@ -17,7 +17,7 @@ class ForgotPasswordController extends Controller
     // Page Forgot Password
     public function index()
     {
-        return view('forgotpassword');
+        return view('auth.forgotpassword');
     }
 
     // Function to Send Email when Email is already find
@@ -56,7 +56,7 @@ class ForgotPasswordController extends Controller
 
     // Check Link
     public function CheckLink($userToken, $timestamp) {
-        return view('resetpassword')
+        return view('auth.resetpassword')
             -> with('token', $userToken)
             -> with('timestamp', $timestamp);
     }

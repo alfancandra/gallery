@@ -7,6 +7,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ForgotPasswordController;
 
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\PhotoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,3 +36,4 @@ Route::post('resetpassword/{userToken}/timestamp/{timestamp}',[ForgotPasswordCon
 
 
 Route::get('/admin',[DashboardController::class,'index'])->name('dashboardadmin');
+Route::get('/admin/photo',[PhotoController::class,'index'])->name('photoadmin');

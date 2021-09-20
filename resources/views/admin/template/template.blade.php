@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - Mazer Admin Dashboard</title>
+    <title>Dashboard</title>
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="{!! asset('assets/admin/vendors/perfect-scrollbar/perfect-scrollbar.css') !!}">
     <link rel="stylesheet" href="{!! asset('assets/admin/vendors/bootstrap-icons/bootstrap-icons.css') !!}">
     <link rel="stylesheet" href="{!! asset('assets/admin/css/app.css') !!}">
+    <link rel="stylesheet" href="{!! asset('assets/admin/vendors/toastify/toastify.css') !!}">
     <link rel="shortcut icon" href="{!! asset('assets/admin/images/favicon.svg" type="image/x-icon') !!}">
 </head>
 
@@ -25,7 +26,7 @@
                 <div class="sidebar-header">
                     <div class="d-flex justify-content-between">
                         <div class="logo">
-                            <a href="index.html"><img src="{!! asset('assets/admin/images/logo/logo.png') !!}" alt="Logo" srcset=""></a>
+                            <a href="{{ route('adm.dashboardadmin') }}"><img src="{!! asset('assets/admin/images/logo/logo.png') !!}" alt="Logo" srcset=""></a>
                         </div>
                         <div class="toggler">
                             <a href="#" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>
@@ -36,18 +37,22 @@
                     <ul class="menu">
                         <li class="sidebar-title">Menu</li>
 
-                        <li class="sidebar-item active ">
-                            <a href="index.html" class='sidebar-link'>
+                        <li class="sidebar-item {{ request()->routeIs('adm.dashboardadmin') ? 'active' : '' }}">
+                            <a href="{{ route('adm.dashboardadmin') }}" class='sidebar-link'>
                                 <i class="bi bi-grid-fill"></i>
                                 <span>Dashboard</span>
                             </a>
                         </li>
 
-                        <li class="sidebar-item">
-                            <a href="index.html" class='sidebar-link'>
+                        <li class="sidebar-item {{ Request::is('admin/photo*') || Request::is('admin/category') ? 'active' : '' }} has-sub">
+                            <a href="" class='sidebar-link'>
                                 <i class="bi bi-stack"></i>
                                 <span>Photo</span>
                             </a>
+                            <ul class="submenu">
+                                <li class="submenu-item"><a href="{{ route('adm.photoadmin') }}">Photo</a></li>
+                                <li class="submenu-item"><a href="{{ route('adm.categoryadmin') }}">Category</a></li>
+                            </ul>
                         </li>
                         
                     </ul>
@@ -62,25 +67,14 @@
                 </a>
             </header>
 
-            <div class="page-heading">
-                <h3>Dashboard</h3>
-            </div>
+            
             <div class="page-content">
                 @yield('content')
             </div>
 
-            <footer>
-                <div class="footer clearfix mb-0 text-muted">
-                    <div class="float-start">
-                        <p>2021 &copy; Mazer</p>
-                    </div>
-                    <div class="float-end">
-                        <p>Crafted with <span class="text-danger"><i class="bi bi-heart"></i></span> by <a
-                                href="http://ahmadsaugi.com">A. Saugi</a></p>
-                    </div>
-                </div>
-            </footer>
+            
         </div>
+
     </div>
     <script src="{!! asset('assets/admin/vendors/perfect-scrollbar/perfect-scrollbar.min.js') !!}"></script>
     <script src="{!! asset('assets/admin/js/bootstrap.bundle.min.js') !!}"></script>
