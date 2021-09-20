@@ -3,7 +3,7 @@
 @section('content')
 	<nav>
         <div class="logo">
-            <a href="index.html">High<em>way</em></a>
+            <a href="{{ url('/') }}">High<em>way</em></a>
         </div>
         <div class="menu-icon">
         <span></span>
