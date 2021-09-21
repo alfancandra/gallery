@@ -2,43 +2,27 @@
 
 @section('content')
 	<nav>
-        <div class="logo" style="z-index: -1">
-            <a href="{{ url('/') }}">Halo</a>
+        <div class="logo">
+            <a href="{{ url('/') }}">High<em>way</em></a>
         </div>
         <div class="menu-icon">
-        <span></span>
-      </div>
-    </nav>
-
-    <div id="video-container">
-        <div class="video-overlay"></div>
-        <div class="video-content">
-            <div class="inner">
-              <h1>Welcome to <em>Highway</em></h1>
-              <p>FREE CSS TEMPLATE by templatemo</p>
-              <p>Homepage with full-width image gallery</p>
-                <div class="scroll-icon">
-                    <a class="scrollTo" data-scrollTo="portfolio" href="#"><img src="img/scroll-icon.png" alt=""></a>
-                </div>    
-            </div>
+            <span></span>
         </div>
-        <video autoplay="" loop="" muted>
-        	<source src="{!! asset('video/highway-loop.mp4') !!}" type="video/mp4" />
-        </video>
-    </div>
+    </nav>
 
     <div class="full-screen-portfolio" id="portfolio">
         <div class="container-fluid">
-          <div class="infinite-scroll">
+          <div class="row">
             @foreach ($photo as $item)
             <div class="col-md-4 col-sm-6">
                 <div class="portfolio-item">
-                    <a href="{{ route('photodescription',[$item->id,$item->title]) }}">
+                    <a href="{{ route('photodescription',[$item->photoid,$item->title]) }}">
                       <div class="thumb">
                         <div class="hover-effect">
                             <div class="hover-content">
                                 <h1>{{ $item->title }}</h1>
                                 <p class="deskripsi">{{ $item->deskripsi }}</p>
+                                <p>{{ $item->category }}</p>
                             </div>
                         </div>
                         <div class="image">
@@ -48,57 +32,10 @@
                 </div>
             </div>
             @endforeach
-            {{-- {{ $photo->links('pagination::bootstrap-4') }} --}}
           </div>
-          <div class="row">
-              <div class="col-md-12">
-                  <div class="load-more-button">
-                      <a href="{{ url('/photos') }}">Load More</a>
-                  </div>
-              </div>
-          </div>
-          
           
         </div>
     </div>
-    
-    
-    {{-- <div class="grid-portfolio" id="portfolio">
-      <div class="container">
-        <h1 style="color:white;">Photo Collection</h1>
-        <hr>
-          <div class="row">
-              @foreach ($photo as $item)
-              <div class="col-md-4 col-sm-6">
-                  <div class="portfolio-item">
-                      <div class="thumb">
-                          <a href="{{ route('photodescription',[$item->id,$item->title]) }}">
-                            <div class="hover-effect">
-                              <div class="hover-content">
-                                  <h1>{{ $item->title }}</h1>
-                                  <p class="deskripsi">{{ $item->deskripsi }}</p>
-                              </div>
-                          </div></a>
-                          <div class="image">
-                              <img class="photo-collection2" src="{{ asset('img/photo/'.$item->images) }}">
-                          </div>
-                      </div>
-                  </div>
-              </div>
-              @endforeach
-              
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="load-more-button">
-                        <a href="#">Load More</a>
-                    </div>
-                </div>
-            </div>
-            
-        </div>
-    </div> --}}
-
 
     <footer>
         <div class="container-fluid">
@@ -179,18 +116,5 @@
         </div>
       </div>
     </section>
-    {{-- <script type="text/javascript">
-      $('ul.pagination').hide();
-      $(function() {
-          $('.infinite-scroll').jscroll({
-              autoTrigger: true,
-              padding: 0,
-              nextSelector: '.pagination li.active + li a',
-              contentSelector: 'div.infinite-scroll',
-              callback: function() {
-                  $('ul.pagination').remove();
-              }
-          });
-      });
-  </script> --}}
+
 @endsection

@@ -26,17 +26,16 @@ https://templatemo.com/tm-520-highway
         <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
     </head>
 
-<body>
-
-    @yield('content');
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
-
-    <script src="js/vendor/bootstrap.min.js"></script>
+<body style="background: #151515">
     
-    <script src="js/plugins.js"></script>
-    <script src="js/main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="{!! asset('js/jquery.jscroll.min.js') !!}"></script>
+    <script src="{!! asset('js/vendor/bootstrap.min.js') !!}"></script>
+    
+    <script src="{!! asset('js/plugins.js') !!}"></script>
+    <script src="{!! asset('js/main.js') !!}"></script>
+    @yield('content');
+    
 
     
 </body>

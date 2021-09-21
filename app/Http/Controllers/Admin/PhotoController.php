@@ -11,7 +11,7 @@ class PhotoController extends Controller
 {
     public function index()
     {
-        $photo = Photo::join('categories','photos.category_id','=','categories.id')->get();
+        $photo = Photo::join('categories','photos.category_id','=','categories.id')->paginate(10);
         return view('admin.photo.photo',compact('photo'))
         ->with('i',(request()->input('page',1)-1)*5);
     }

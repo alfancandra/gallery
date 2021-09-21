@@ -40,6 +40,7 @@
                                 </tr>
                                 @endforeach
                             </tbody>
+                            {{ $photo->links() }}
                         </table>
                     </div>
                 </div>

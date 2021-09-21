@@ -9,6 +9,8 @@ use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\PhotoController;
 
+use App\Http\Controllers\PhotoCollectionController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -35,5 +37,6 @@ Route::get('resetpassword/{userToken}/timestamp/{timestamp}',[ForgotPasswordCont
 Route::post('resetpassword/{userToken}/timestamp/{timestamp}',[ForgotPasswordController::class,'newpassword'])->name('newpassword');
 
 
-Route::get('/admin',[DashboardController::class,'index'])->name('dashboardadmin');
-Route::get('/admin/photo',[PhotoController::class,'index'])->name('photoadmin');
+Route::get('/photo/{id}/{title}',[PhotoCollectionController::class,'photodescription'])->name('photodescription');
+Route::get('/photos',[PhotoCollectionController::class,'showall'])->name('showallphoto');
+Route::get('/category/{category_id}',[PhotoCollectionController::class,'showbycategory'])->name('showbycategory');
