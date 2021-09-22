@@ -16,4 +16,9 @@ class Photo extends Model
         'images',
         'active'
     ];
+
+    public function incrementReadCount() {
+        $this->reads++;
+        return $this->save();
+    }
 }

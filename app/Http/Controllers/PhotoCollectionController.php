@@ -13,7 +13,9 @@ class PhotoCollectionController extends Controller
         $photo = Photo::join('categories','categories.id','=','photos.category_id')
         ->where('photos.id',$id)->first();
         $category = Category::where('active',1)->get();
-        return view('photo.description',compact('photo','title','category'));
+        $foto = Photo::where('id',$id)->first();
+        $foto->incrementReadCount();
+        return view('photo.description',compact('photo','title','category','foto'));
     }
 
     public function showall()
