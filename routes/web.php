@@ -27,6 +27,7 @@ Route::get('/',[HomeController::class,'index'])->name('home');
 Route::get('/login',[LoginController::class,'index'])->name('login');
 Route::get('/register',[RegisterController::class,'index'])->name('register');
 Route::get('/forgotpassword',[ForgotPasswordController::class,'index'])->name('forgotpassword');
+Route::get('/logout',[LoginController::class,'logout'])->name('logout');
 
 Route::post('register',[RegisterController::class,'store'])->name('storeregister');
 Route::post('login',[LoginController::class,'login'])->name('storelogin');

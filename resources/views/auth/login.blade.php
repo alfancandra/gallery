@@ -2,11 +2,7 @@
 
 @section('content');
 <link rel="stylesheet" type="text/css" href="{!! asset('css/login.css') !!}">
-<nav style="background: #B5B5B5;opacity:0.5">
-  <div class="logo" style="color:black">
-      <a href="{{ url('/') }}">High<em>way</em></a>
-  </div>
-</nav>
+
 <div class="wrapper fadeInDown">
   <div id="formContent">
     <!-- Tabs Titles -->

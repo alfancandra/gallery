@@ -36,7 +36,7 @@
                                     <td style="width:120px;">{{ $p->category }}</td>
                                     <td style="width: 150px"><a href="{{ url('img/photo/'.$p->images) }}"><img src="{{ asset('img/photo/'.$p->images)  }}" width="100px"></td>
                                     <td style="width: 150px"><a href="" class="btn btn-success btn-md">Edit</a>
-                                        <a href="" class="btn btn-danger btn-md">Hapus</a></td>
+                                        <a onClick="if(!confirm('Are you sure to delete this photo?')){return false;}" href="{{ route('adm.destroyphotoadmin',$p->idphoto) }}" class="btn btn-danger btn-md">Hapus</a></td>
                                 </tr>
                                 @endforeach
                             </tbody>

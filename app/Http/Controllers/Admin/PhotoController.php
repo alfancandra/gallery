@@ -11,7 +11,9 @@ class PhotoController extends Controller
 {
     public function index()
     {
-        $photo = Photo::join('categories','photos.category_id','=','categories.id')->paginate(10);
+        $photo = Photo::join('categories','photos.category_id','=','categories.id')
+        ->select('photos.id as idphoto','photos.title','photos.deskripsi','photos.images','categories.category')
+        ->paginate(10);
         return view('admin.photo.photo',compact('photo'))
         ->with('i',(request()->input('page',1)-1)*5);
     }
@@ -51,5 +53,13 @@ class PhotoController extends Controller
         /// insert setiap request dari form ke dalam database via model
         /// jika menggunakan metode ini, maka nama field dan nama form harus sama
         Photo::create($request->all());
+    }
+
+    public function destroy($id)
+    {
+        $photo = Photo::find($id);
+        $photo->delete();
+        return redirect()->route('adm.photoadmin')
+                        ->with('success','Success Deleted Photo');
     }
 }

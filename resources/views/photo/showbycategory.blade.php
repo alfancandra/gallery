@@ -1,15 +1,6 @@
 @extends('template')
 
 @section('content')
-	<nav>
-        <div class="logo">
-            <a href="{{ url('/') }}">High<em>way</em></a>
-        </div>
-        <div class="menu-icon">
-            <span></span>
-        </div>
-    </nav>
-
     <div class="page-heading">
         <div class="container">
             <div class="heading-content">
@@ -101,28 +92,4 @@
         </div>
       </div>
     </div>
-
-    
-
-    <section class="overlay-menu">
-      <div class="container">
-        <div class="row">
-          <div class="main-menu">
-              <ul>
-                  @foreach ($category as $cat)
-                    <li>
-                        <a href="">{{ $cat->category }}</a>
-                    </li>
-                  @endforeach
-                  
-                  <li>
-                      <a href="{{ route('login') }}">Login</a>
-                  </li>
-              </ul>
-              <p>I LOVE YOU.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
 @endsection

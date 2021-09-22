@@ -27,6 +27,42 @@ https://templatemo.com/tm-520-highway
     </head>
 
 <body style="background: #151515">
+    <nav>
+        <div class="logo" style="z-index: -1">
+            <a href="{{ url('/') }}">Halo</a>
+        </div>
+        <div class="menu-icon">
+        <span></span>
+      </div>
+    </nav>
+    <section class="overlay-menu">
+        <div class="container">
+          <div class="row">
+            <div class="main-menu">
+                <ul>
+                    @php
+                        $category = App\Models\Category::where('active',1)->get();
+                    @endphp
+                    @foreach ($category as $cat)
+                      <li>
+                          <a href="{{ url('category/'.$cat->id) }}">{{ $cat->category }}</a>
+                      </li>
+                    @endforeach
+                    @if(!Auth::user())
+                    <li>
+                        <a href="{{ route('login') }}">Login</a>
+                    </li>
+                    @else
+                    <li>
+                        <a href="{{ route('logout') }}">Logout</a>
+                    </li>
+                    @endif
+                </ul>
+                <p>BY SHIPPU.</p>
+            </div>
+          </div>
+        </div>
+      </section>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="{!! asset('js/jquery.jscroll.min.js') !!}"></script>

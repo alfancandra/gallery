@@ -54,6 +54,13 @@
                                 <li class="submenu-item"><a href="{{ route('adm.categoryadmin') }}">Category</a></li>
                             </ul>
                         </li>
+
+                        <li class="sidebar-item">
+                            <a href="{{ route('logout') }}" class='sidebar-link'>
+                                <i class="bi bi-x-octagon-fill"></i>
+                                <span>Logout</span>
+                            </a>
+                        </li>
                         
                     </ul>
                 </div>

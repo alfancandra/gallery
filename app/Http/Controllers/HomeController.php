@@ -10,8 +10,10 @@ class HomeController extends Controller
 {
     public function index(Request $request)
     {
-        $photo = Photo::where('active',1)
-        ->orderBy('created_at','DESC')->paginate(6);
+        $photo = Photo::join('categories','categories.id','=','photos.category_id')
+        ->select('photos.id as idphoto','photos.title','photos.deskripsi','photos.images','categories.category')
+        ->where('photos.active',1)
+        ->orderBy('photos.created_at','DESC')->paginate(6);
         $category = Category::where('active',1)->get();
         
         return view('home',compact('photo','category'));

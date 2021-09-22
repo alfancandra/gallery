@@ -1,14 +1,7 @@
 @extends('template')
 
 @section('content')
-	<nav>
-        <div class="logo" style="z-index: -1">
-            <a href="{{ url('/') }}">Halo</a>
-        </div>
-        <div class="menu-icon">
-        <span></span>
-      </div>
-    </nav>
+	
 
     <div id="video-container">
         <div class="video-overlay"></div>
@@ -33,12 +26,13 @@
             @foreach ($photo as $item)
             <div class="col-md-4 col-sm-6">
                 <div class="portfolio-item">
-                    <a href="{{ route('photodescription',[$item->id,$item->title]) }}">
+                    <a href="{{ route('photodescription',[$item->idphoto,$item->title]) }}">
                       <div class="thumb">
                         <div class="hover-effect">
                             <div class="hover-content">
                                 <h1>{{ $item->title }}</h1>
                                 <p class="deskripsi">{{ $item->deskripsi }}</p>
+                                <p>{{ $item->category }}</p>
                             </div>
                         </div>
                         <div class="image">
@@ -159,26 +153,7 @@
 
     
 
-    <section class="overlay-menu">
-      <div class="container">
-        <div class="row">
-          <div class="main-menu">
-              <ul>
-                  @foreach ($category as $cat)
-                    <li>
-                        <a href="">{{ $cat->category }}</a>
-                    </li>
-                  @endforeach
-                  
-                  <li>
-                      <a href="{{ route('login') }}">Login</a>
-                  </li>
-              </ul>
-              <p>I LOVE YOU.</p>
-          </div>
-        </div>
-      </div>
-    </section>
+    
     {{-- <script type="text/javascript">
       $('ul.pagination').hide();
       $(function() {

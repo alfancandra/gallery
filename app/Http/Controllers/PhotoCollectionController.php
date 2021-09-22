@@ -21,7 +21,7 @@ class PhotoCollectionController extends Controller
         $photo = Photo::join('categories','categories.id','=','photos.category_id')
         ->where('photos.active',1)
         ->orderBy('photos.created_at','DESC')
-        ->select('photos.id as photoid','photos.title','photos.images','categories.category')->get();
+        ->select('photos.id as photoid','photos.title','photos.deskripsi','photos.images','categories.category')->get();
         $category = Category::where('active',1)->get();
         return view('photo.showall',compact('photo','category'));
     }

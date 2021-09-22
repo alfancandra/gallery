@@ -12,6 +12,7 @@ Route::group(['middleware' => ["UserAdmin", 'prevent-back'], 'as' => 'adm.'], fu
 
     // Photo
     Route::get('/admin/photo',[PhotoController::class,'index'])->name('photoadmin');
+    Route::get('/admin/photo/destroy/{id}',[PhotoController::class,'destroy'])->name('destroyphotoadmin');
     Route::get('/admin/photo/add',[PhotoController::class,'addphoto'])->name('addphotoadmin');
     Route::post('admin/photo/add',[PhotoController::class,'store'])->name('storephoto');
 
