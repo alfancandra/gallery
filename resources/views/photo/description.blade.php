@@ -1,6 +1,7 @@
 @extends('template')
 
 @section('content')
+<link rel="stylesheet" href="{!! asset('css/description.css') !!}">
 <div class="blog-entries">
     <div class="container">
         <div class="col">
@@ -14,29 +15,37 @@
                                 <span><a href="#">Admin</a> / <a href="#">{{ $photo->category }}</a></span>
                                 <p style="text-align: justify;">{{ $photo->deskripsi }}</p>
                                 <div class="tags-share">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <ul class="tags">
-                                                <li>Tags:</li>
-                                                <li><a href="#">life</a>,</li>
-                                                <li><a href="#">nature</a>,</li>
-                                                <li><a href="#">life is good</a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <ul class="share">
-                                                <li>Share:</li>
-                                                <li><a href="#">facebook</a>,</li>
-                                                <li><a href="#">twitter</a>,</li>
-                                                <li><a href="#">behance</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
+                                    
                                 </div>
+                                <h3 style="color:white">Send Comment</h3>
+                                @php
+                                if(Auth::user()){
+                                  $iduser = Auth::user()->id;
+                                }else{
+                                  $iduser = 0;
+                                }
+                                @endphp
+                                <form action="{{ route('newcomment',['id_photo'=>$photo->idphoto,'id_user'=>$iduser]) }}" method="POST">
+                                  @csrf
+                                  <textarea name="comment" class="form-control" style="margin-bottom: 10px"></textarea>
+                                  <input class="btn btn-outline-primary mt-2" type="submit">
+                                </form>
                             </div>
                         </div>
                     </div>
                 </div>
+                <div class="row">
+                  <div class="col-md-12">
+                      <h1>Comments</h1>
+                      @foreach ($comment as $c)
+                      <div class="comment mt-4 mb-2 text-justify float-left" style="width: 100%;border-bottom:2px solid grey;"> <img src="{!! asset('img/profile.png') !!}" alt="" class="rounded-circle" width="40" height="40">
+                          <h4 style="margin-left: 5px">{{ $c->name }}</h4> <span>- {{ Carbon\Carbon::parse($c->tanggal)->diffForHumans() }}</span> <br>
+                          <p style="margin-left: 50px">{{ $c->comment }}</p>
+                      </div>
+                      @endforeach
+                  </div>
+                </div>
+              </div>
             </div>
         </div>
         

@@ -1,10 +1,12 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\LoginController;
-use App\Http\Controllers\RegisterController;
-use App\Http\Controllers\ForgotPasswordController;
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\Autentikasi\LoginController;
+use App\Http\Controllers\Autentikasi\RegisterController;
+use App\Http\Controllers\Autentikasi\ForgotPasswordController;
 
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\PhotoController;
@@ -21,8 +23,11 @@ use App\Http\Controllers\PhotoCollectionController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::group(['middleware' => 'prevent-back'],function(){
+	Auth::routes();
+	Route::get('/',[HomeController::class,'index'])->name('home');
+});
 
-Route::get('/',[HomeController::class,'index'])->name('home');
 
 Route::get('/login',[LoginController::class,'index'])->name('login');
 Route::get('/register',[RegisterController::class,'index'])->name('register');
@@ -41,3 +46,5 @@ Route::post('resetpassword/{userToken}/timestamp/{timestamp}',[ForgotPasswordCon
 Route::get('/photo/{id}/{title}',[PhotoCollectionController::class,'photodescription'])->name('photodescription');
 Route::get('/photos',[PhotoCollectionController::class,'showall'])->name('showallphoto');
 Route::get('/category/{category_id}',[PhotoCollectionController::class,'showbycategory'])->name('showbycategory');
+
+Route::post('comment/{id_photo}/{id_user}',[CommentController::class,'store'])->name('newcomment');

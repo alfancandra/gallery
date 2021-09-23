@@ -5,17 +5,24 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Photo;
 use App\Models\Category;
+use App\Models\Comment;
 
 class PhotoCollectionController extends Controller
 {
     public function photodescription($id,$title)
     {
         $photo = Photo::join('categories','categories.id','=','photos.category_id')
+        ->select('photos.id as idphoto','categories.id as idcategory','photos.title','photos.deskripsi','photos.images','categories.category')
         ->where('photos.id',$id)->first();
-        $category = Category::where('active',1)->get();
         $foto = Photo::where('id',$id)->first();
+        $comment = Comment::join('photos','photos.id','=','comments.photo_id')
+        ->join('users','users.id','=','comments.user_id')
+        ->where('photos.id',$id)
+        ->select('comments.comment','users.name','comments.created_at as tanggal')
+        ->orderBy('comments.created_at','DESC')
+        ->get();
         $foto->incrementReadCount();
-        return view('photo.description',compact('photo','title','category','foto'));
+        return view('photo.description',compact('photo','title','comment','foto'));
     }
 
     public function showall()
