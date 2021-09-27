@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Photo;
 use App\Models\Category;
+use App\Models\Comment;
 
 class DashboardController extends Controller
 {
@@ -16,6 +17,11 @@ class DashboardController extends Controller
         $photoCount = Photo::count();
         $categoryCount = Category::where('active',1)->count();
         $photoView = Photo::sum('reads');
-        return view('admin.dashboard',compact('userCount','photoCount','photoView','categoryCount'));
+        $comments = Comment::join('photos','photos.id','=','comments.photo_id')
+        ->join('users','users.id','=','comments.user_id')
+        ->orderBy('comments.created_at','DESC')
+        ->select('photos.id as photoid','photos.title','users.name','comments.comment','comments.created_at as commentdate')
+        ->paginate(4);
+        return view('admin.dashboard',compact('userCount','photoCount','photoView','categoryCount','comments'));
     }
 }

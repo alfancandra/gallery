@@ -35,7 +35,7 @@ class RegisterController extends Controller
                 'hp' => $request->hp,
                 'institusi' => $request->institusi
             ]);
-            return redirect()->route('login')->with(['success' => 'An email has been sent to your email address containing an activation link. Please click on the link to activate your account.']);
+            return redirect()->route('login')->with(['success' => 'Success create account!. you can login now.']);
         }catch(QueryException $e){
             return redirect()->route('register')->with(['error' => $e->errorInfo]);
         }

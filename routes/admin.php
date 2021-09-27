@@ -4,11 +4,16 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\PhotoController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\CategoryController;
 
 Route::group(['middleware' => ["UserAdmin", 'prevent-back'], 'as' => 'adm.'], function() {
 
     Route::get('/admin',[DashboardController::class,'index'])->name('dashboardadmin');
+
+    // User
+    Route::get('/admin/user',[UserController::class,'user'])->name('user');
+    Route::get('/admin/useradmin',[UserController::class,'admin'])->name('useradmin');
 
     // Photo
     Route::get('/admin/photo',[PhotoController::class,'index'])->name('photoadmin');

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Autentikasi\LoginController;
 use App\Http\Controllers\Autentikasi\RegisterController;
 use App\Http\Controllers\Autentikasi\ForgotPasswordController;
@@ -23,11 +24,8 @@ use App\Http\Controllers\PhotoCollectionController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::group(['middleware' => 'prevent-back'],function(){
-	Auth::routes();
-	Route::get('/',[HomeController::class,'index'])->name('home');
-});
 
+Route::get('/',[HomeController::class,'index'])->name('home');
 
 Route::get('/login',[LoginController::class,'index'])->name('login');
 Route::get('/register',[RegisterController::class,'index'])->name('register');
@@ -48,3 +46,8 @@ Route::get('/photos',[PhotoCollectionController::class,'showall'])->name('showal
 Route::get('/category/{category_id}',[PhotoCollectionController::class,'showbycategory'])->name('showbycategory');
 
 Route::post('comment/{id_photo}/{id_user}',[CommentController::class,'store'])->name('newcomment');
+
+Route::group(['middleware' => ["UserLogin", 'prevent-back'], 'as' => 'usr.'], function() {
+	Route::get('/profile',[ProfileController::class,'index'])->name('profile');
+	Route::post('profile',[ProfileController::class,'update'])->name('updateprofile');
+});

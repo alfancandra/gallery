@@ -1,5 +1,7 @@
 @extends('template');
 
+@section('title', 'Login')
+
 @section('content');
 <link rel="stylesheet" type="text/css" href="{!! asset('css/login.css') !!}">
 

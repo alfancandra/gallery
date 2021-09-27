@@ -18,7 +18,7 @@ class PhotoCollectionController extends Controller
         $comment = Comment::join('photos','photos.id','=','comments.photo_id')
         ->join('users','users.id','=','comments.user_id')
         ->where('photos.id',$id)
-        ->select('comments.comment','users.name','comments.created_at as tanggal')
+        ->select('comments.comment','users.name','users.image as userimage','comments.created_at as tanggal')
         ->orderBy('comments.created_at','DESC')
         ->get();
         $foto->incrementReadCount();

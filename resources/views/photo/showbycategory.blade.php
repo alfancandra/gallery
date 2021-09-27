@@ -1,5 +1,7 @@
 @extends('template')
 
+@section('title', $categoryname->category)
+
 @section('content')
     <div class="page-heading">
         <div class="container">

@@ -9,7 +9,7 @@
             <div class="card">
                 <div class="card-header">
                     <h4 class="card-title">Table Photo</h4>
-                    <a class="btn btn-success btn-md mt-3" href="{{ route('adm.addphotoadmin') }}">Tambah Data</a>
+                    <a class="btn btn-success btn-md mt-3" href="{{ route('adm.addphotoadmin') }}">Add Data</a>
                 </div>
                 
                 <div class="card-content">
@@ -24,6 +24,7 @@
                                     <th>Description</th>
                                     <th>Category</th>
                                     <th>Images</th>
+                                    <th>View</th>
                                     <th>ACTION</th>
                                 </tr>
                             </thead>
@@ -35,8 +36,9 @@
                                     <td style="word-wrap: break-word;width: 500px;">{{ $p->deskripsi }}</td>
                                     <td style="width:120px;">{{ $p->category }}</td>
                                     <td style="width: 150px"><a href="{{ url('img/photo/'.$p->images) }}"><img src="{{ asset('img/photo/'.$p->images)  }}" width="100px"></td>
+                                    <td style="width:70px">{{ $p->reads }}</td>
                                     <td style="width: 150px"><a href="" class="btn btn-success btn-md">Edit</a>
-                                        <a onClick="if(!confirm('Are you sure to delete this photo?')){return false;}" href="{{ route('adm.destroyphotoadmin',$p->idphoto) }}" class="btn btn-danger btn-md">Hapus</a></td>
+                                        <a onClick="if(!confirm('Are you sure to delete this photo?')){return false;}" href="{{ route('adm.destroyphotoadmin',$p->idphoto) }}" class="btn btn-danger btn-md">Delete</a></td>
                                 </tr>
                                 @endforeach
                             </tbody>

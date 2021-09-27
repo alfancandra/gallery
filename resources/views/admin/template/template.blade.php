@@ -47,11 +47,22 @@
                         <li class="sidebar-item {{ Request::is('admin/photo*') || Request::is('admin/category') ? 'active' : '' }} has-sub">
                             <a href="" class='sidebar-link'>
                                 <i class="bi bi-stack"></i>
-                                <span>Photo</span>
+                                <span>Photos</span>
                             </a>
                             <ul class="submenu">
                                 <li class="submenu-item"><a href="{{ route('adm.photoadmin') }}">Photo</a></li>
                                 <li class="submenu-item"><a href="{{ route('adm.categoryadmin') }}">Category</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="sidebar-item {{ Request::is('admin/user*') || Request::is('admin/useradmin') ? 'active' : '' }} has-sub">
+                            <a href="" class='sidebar-link'>
+                                <i class="iconly-boldProfile"></i>
+                                <span>Users</span>
+                            </a>
+                            <ul class="submenu">
+                                <li class="submenu-item"><a href="{{ route('adm.user') }}">User</a></li>
+                                <li class="submenu-item"><a href="{{ route('adm.useradmin') }}">Admin</a></li>
                             </ul>
                         </li>
 

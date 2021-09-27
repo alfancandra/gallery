@@ -1,5 +1,7 @@
 @extends('template');
 
+@section('title', 'Reset Password')
+
 @section('content');
 <link rel="stylesheet" type="text/css" href="{!! asset('css/login.css') !!}">
 <div class="wrapper fadeInDown">

@@ -1,5 +1,7 @@
 @extends('template')
 
+@section('title', $photo->title)
+
 @section('content')
 <link rel="stylesheet" href="{!! asset('css/description.css') !!}">
 <div class="blog-entries">
@@ -38,7 +40,7 @@
                   <div class="col-md-12">
                       <h1>Comments</h1>
                       @foreach ($comment as $c)
-                      <div class="comment mt-4 mb-2 text-justify float-left" style="width: 100%;border-bottom:2px solid grey;"> <img src="{!! asset('img/profile.png') !!}" alt="" class="rounded-circle" width="40" height="40">
+                      <div class="comment mt-4 mb-2 text-justify float-left" style="width: 100%;border-bottom:2px solid grey;"> <img src="{!! asset('img/user/'.$c->userimage) !!}" alt="" style="border-radius: 50%" width="40" height="40">
                           <h4 style="margin-left: 5px">{{ $c->name }}</h4> <span>- {{ Carbon\Carbon::parse($c->tanggal)->diffForHumans() }}</span> <br>
                           <p style="margin-left: 50px">{{ $c->comment }}</p>
                       </div>

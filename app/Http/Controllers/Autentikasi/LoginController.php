@@ -14,6 +14,11 @@ class LoginController extends Controller
 {
     public function index()
     {
+        if(Auth::check() && Auth::user()->role_id==0){
+            return redirect() -> route('home');
+        }elseif(Auth::check() && Auth::user()->role_id==1){
+            return redirect() -> route('adm.dashboardadmin');
+        }
         return view('auth.login');
     }
 

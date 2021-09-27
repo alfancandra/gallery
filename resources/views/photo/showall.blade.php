@@ -1,5 +1,7 @@
 @extends('template')
 
+@section('title', 'All Photo')
+
 @section('content')
     <div class="full-screen-portfolio" id="portfolio">
         <div class="container-fluid">
