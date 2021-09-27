@@ -25,24 +25,24 @@
                         <div class="form-group">
                             <label for="basicInput">Title</label>
                             <input type="text" name="title" class="form-control" id="basicInput"
-                                placeholder="Enter Title">
+                                placeholder="Enter Title" required>
                         </div>
 
                         <div class="form-group">
                             <label for="basicInput">Description</label>
-                            <textarea class="form-control" name="deskripsi"></textarea>
+                            <textarea class="form-control" name="deskripsi" required></textarea>
                         </div>
 
                         <div class="form-group">
                             <div class="mb-3">
                                 <label for="formFile" class="form-label">Input Photo</label>
-                                <input class="form-control" name="images" type="file" id="formFile">
+                                <input class="form-control" name="images" type="file" id="formFile" required>
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label for="basicInput">Category</label>
-                            <select class="form-select" name="category_id" id="basicSelect">
+                            <select class="form-select" name="category_id" id="basicSelect" required>
                                 @foreach ($category as $c)
                                     <option value="{{ $c->id }}">{{ $c->category }}</option>
                                 @endforeach

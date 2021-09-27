@@ -63,7 +63,11 @@ https://templatemo.com/tm-520-highway
                         <a href="{{ route('register') }}">Register</a>
                     </li>
                     @else
-                    
+                    @if(Auth::user()->role_id==1)
+                    <li>
+                        <a href="{{ route('adm.dashboardadmin') }}">Admin Page</a>
+                    </li>
+                    @endif
                     <li>
                         <a href="{{ route('usr.profile') }}">Profile</a>
                     </li>

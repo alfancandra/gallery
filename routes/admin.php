@@ -20,6 +20,9 @@ Route::group(['middleware' => ["UserAdmin", 'prevent-back'], 'as' => 'adm.'], fu
     Route::get('/admin/photo/destroy/{id}',[PhotoController::class,'destroy'])->name('destroyphotoadmin');
     Route::get('/admin/photo/add',[PhotoController::class,'addphoto'])->name('addphotoadmin');
     Route::post('admin/photo/add',[PhotoController::class,'store'])->name('storephoto');
+    Route::get('/admin/photo/{id}',[PhotoController::class,'show'])->name('showphoto');
+    Route::get('/admin/photo/edit/{id}',[PhotoController::class,'edit'])->name('editphoto');
+    Route::post('admin/photo/edit/{id}',[PhotoController::class,'update'])->name('updatephoto');
 
     // Category
     Route::get('/admin/category',[CategoryController::class,'index'])->name('categoryadmin');

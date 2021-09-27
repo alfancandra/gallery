@@ -276,13 +276,13 @@ nav {
 }
 
 #video-container .video-overlay {
-  z-index: 9999;
+  z-index: 99;
   background: rgba(0,0,0,0.5);
   width: 100%;
 }
 
 #video-container .video-content {
-  z-index: 99999;
+  z-index: 99;
   position: absolute;
   height: 100%;
   width: 100%;
@@ -1367,6 +1367,15 @@ footer a:hover {
 
   .more-about-us .content {
     padding: 60px 30px;
+  }
+
+  nav .logo a {
+    font-size: 18px;
+    line-height: 80px;
+    text-transform: uppercase;
+    color: #fff;
+    text-decoration: none;
+    letter-spacing: 0.5px;
   }
 
 }

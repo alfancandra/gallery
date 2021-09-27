@@ -1,27 +1,25 @@
 @extends('template')
 @section('title', 'Home')
 @section('content')
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    {{-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" /> --}}
     <link rel="stylesheet" href="{!! asset('css/member.css')  !!}">
 
     <div id="video-container">
         <div class="video-overlay"></div>
         <div class="video-content">
             <div class="inner">
-                <h1>PAMERAN <em>2021/2022</em></h1>
-                <p style="width: 900px">Biro kepengurusan dalam Hima Tricaka yang bertanggung jawab untuk meningkatkan,
-                    mengembangkan, serta mengapresiasi segala bentuk potensi dan karya mahasiswa arsitektur dalam aspek
-                    akademis maupun non akademis untuk membangun jurusan arsitektur dengan wujud memfasilitasi hasil karya
-                    mahasiswa dalam bentuk pameran</p>
-
+              <h1>PAMERAN <em>2021/2022</em></h1>
+              <p>Biro kepengurusan dalam Hima Tricaka</p>
+              <p>yang bertanggung jawab untuk meningkatkan,
+                mengembangkan, serta mengapresiasi segala bentuk potensi</p><p> dan karya mahasiswa arsitektur dalam aspek
+                akademis maupun non akademis untuk membangun jurusan arsitektur</p><p> dengan wujud memfasilitasi hasil karya
+                mahasiswa dalam bentuk pameran</p>
                 <div class="scroll-icon">
                     <a class="scrollTo" data-scrollTo="portfolio" href="#"><img src="img/scroll-icon.png" alt=""></a>
-                </div>
+                </div>    
             </div>
         </div>
-        <video autoplay="" loop="" muted>
-            <source src="{!! asset('video/highway-loop.mp4') !!}" type="video/mp4" />
-        </video>
+        <img src="{!! asset('img/bg.jpg') !!}">
     </div>
 
     {{-- MEMBER --}}

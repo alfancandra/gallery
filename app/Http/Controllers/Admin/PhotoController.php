@@ -62,4 +62,37 @@ class PhotoController extends Controller
         return redirect()->route('adm.photoadmin')
                         ->with('success','Success Deleted Photo');
     }
+
+    public function show($id)
+    {
+        $photo = Photo::join('categories','photos.category_id','=','categories.id')
+        ->select('photos.id as idphoto','photos.reads','photos.title','photos.deskripsi','photos.images','categories.category')
+        ->where('photos.id',$id)
+        ->first();
+        return view('admin.photo.show',compact('photo'));
+    }
+
+    public function edit($id)
+    {
+        $photo = Photo::where('id',$id)->first();
+        $category = Category::where('active',1)->get();
+        return view('admin.photo.edit',compact('photo','category'));
+    }
+
+    public function update(Request $request,$id)
+    {
+        // Validasi
+        $request->validate([
+            'title' => 'required',
+            'deskripsi' =>  'required',
+            'category_id' => 'required'
+        ]);
+        $photo = Photo::find($id);
+        $photo->title = $request->title;
+        $photo->deskripsi = $request->deskripsi;
+        $photo->category_id = $request->category_id;
+        $photo->save();
+        return redirect()->route('adm.photoadmin')
+                        ->with('success','Update successfully');
+    }
 }
