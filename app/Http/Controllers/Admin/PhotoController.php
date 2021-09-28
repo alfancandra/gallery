@@ -12,7 +12,7 @@ class PhotoController extends Controller
     public function index()
     {
         $photo = Photo::join('categories','photos.category_id','=','categories.id')
-        ->select('photos.id as idphoto','photos.reads','photos.title','photos.deskripsi','photos.images','categories.category')
+        ->select('photos.id as idphoto','photos.reads','photos.active as photoactive','photos.title','photos.deskripsi','photos.images','categories.category')
         ->get();
         return view('admin.photo.photo',compact('photo'))
         ->with('i',(request()->input('page',1)-1)*5);
@@ -66,7 +66,7 @@ class PhotoController extends Controller
     public function show($id)
     {
         $photo = Photo::join('categories','photos.category_id','=','categories.id')
-        ->select('photos.id as idphoto','photos.reads','photos.title','photos.deskripsi','photos.images','categories.category')
+        ->select('photos.id as idphoto','photos.active as photoactive','photos.reads','photos.title','photos.deskripsi','photos.images','categories.category')
         ->where('photos.id',$id)
         ->first();
         return view('admin.photo.show',compact('photo'));
@@ -94,5 +94,23 @@ class PhotoController extends Controller
         $photo->save();
         return redirect()->route('adm.photoadmin')
                         ->with('success','Update successfully');
+    }
+
+    public function active($id)
+    {
+        $photo = Photo::find($id);
+        $photo->active=1;
+        $photo->save();
+        return redirect()->route('adm.photoadmin')
+                        ->with('success','Active successfully');
+    }
+
+    public function deactive($id)
+    {
+        $photo = Photo::find($id);
+        $photo->active=0;
+        $photo->save();
+        return redirect()->route('adm.photoadmin')
+                        ->with('success','Deactive successfully');
     }
 }

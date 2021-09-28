@@ -46,6 +46,16 @@
                                     <div class="col-md-8 form-group">
                                         <label>{{ $photo->reads }}</label>
                                     </div>
+                                    <div class="col-md-4 mb-3">
+                                        <label>Status</label>
+                                    </div>
+                                    <div class="col-md-8 form-group">
+                                        @if($photo->photoactive==1)
+                                        <span class="badge bg-success">Active</span>
+                                        @else
+                                        <span class="badge bg-danger">Non-Active</span>
+                                        @endif
+                                    </div>
                                 </div>
                             </div>
                         </form>

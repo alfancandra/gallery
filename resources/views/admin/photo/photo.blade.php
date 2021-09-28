@@ -30,6 +30,7 @@
                                     <th>Title</th>
                                     <th>Description</th>
                                     <th>Category</th>
+                                    <th>Status</th>
                                     <th>View</th>
                                     <th>ACTION</th>
                                 </tr>
@@ -41,8 +42,20 @@
                                     <td style="word-wrap: break-word;width: 300px;"><a href="{{ route('adm.showphoto',$p->idphoto) }}">{{ $p->title }}</a></td>
                                     <td style="word-wrap: break-word;width: 500px;">{{ $p->deskripsi }}</td>
                                     <td style="width:200px;">{{ $p->category }}</td>
+                                    <td style="width: 100px">
+                                        @if($p->photoactive==1)
+                                        <span class="badge bg-success">Active</span>
+                                        @else
+                                        <span class="badge bg-danger">Non-Active</span>
+                                        @endif
+                                        </td>
                                     <td style="width:70px">{{ $p->reads }}</td>
-                                    <td style="width: 150px"><a href="{{ route('adm.editphoto',$p->idphoto) }}" class="btn btn-success btn-md">Edit</a>
+                                    <td style="width: 250px"><a href="{{ route('adm.editphoto',$p->idphoto) }}" class="btn btn-success btn-md">Edit</a>
+                                        @if($p->photoactive==1)
+                                        <a href="{{ route('adm.deactivephoto',$p->idphoto) }}" class="btn btn-warning btn-md">Deactive</a>
+                                        @else
+                                        <a href="{{ route('adm.activephoto',$p->idphoto) }}" class="btn btn-info btn-md">Active</a>
+                                        @endif
                                         <a onClick="if(!confirm('Are you sure to delete this photo?')){return false;}" href="{{ route('adm.destroyphotoadmin',$p->idphoto) }}" class="btn btn-danger btn-md">Delete</a></td>
                                 </tr>
                                 @endforeach
