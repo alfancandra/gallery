@@ -1,5 +1,6 @@
 @extends('admin.template.template');
 @section('content')
+<link rel="stylesheet" href="{!! asset('assets/admin/vendors/simple-datatables/style.css') !!}">
 <div class="page-heading">
     <h3>Photo</h3>
 </div>
@@ -14,7 +15,6 @@
                 
                 @if ($message = Session::get('success'))
                     <div class="alert alert-success alert-block mb-3">
-                        <button type="button" class="close" data-dismiss="alert">×</button>    
                         {{ $message }}
                     </div>
                 @endif
@@ -23,7 +23,7 @@
                     
                     <!-- table hover -->
                     <div class="table-responsive">
-                        <table class="table table-hover mb-0">
+                        <table class="table table-striped" id="table1">
                             <thead>
                                 <tr>
                                     <th>No</th>
@@ -47,7 +47,6 @@
                                 </tr>
                                 @endforeach
                             </tbody>
-                            {{ $photo->links() }}
                         </table>
                     </div>
                 </div>
@@ -56,3 +55,11 @@
     </div>
 </section>
 @endsection
+@push('js-plugin')
+<script src="{!! asset('assets/admin/vendors/simple-datatables/simple-datatables.js') !!}"></script>
+<script>
+    // Simple Datatable
+    let table1 = document.querySelector('#table1');
+    let dataTable = new simpleDatatables.DataTable(table1);
+</script>
+@endpush

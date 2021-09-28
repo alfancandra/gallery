@@ -13,7 +13,7 @@ class PhotoController extends Controller
     {
         $photo = Photo::join('categories','photos.category_id','=','categories.id')
         ->select('photos.id as idphoto','photos.reads','photos.title','photos.deskripsi','photos.images','categories.category')
-        ->paginate(10);
+        ->get();
         return view('admin.photo.photo',compact('photo'))
         ->with('i',(request()->input('page',1)-1)*5);
     }
@@ -47,7 +47,7 @@ class PhotoController extends Controller
            
             $file->save();
            return redirect()->route('adm.photoadmin')
-                        ->with('success','Post deleted successfully');
+                        ->with('success','Photo Added successfully');
         }  
          
         /// insert setiap request dari form ke dalam database via model

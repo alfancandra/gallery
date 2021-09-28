@@ -13,7 +13,12 @@ Route::group(['middleware' => ["UserAdmin", 'prevent-back'], 'as' => 'adm.'], fu
 
     // User
     Route::get('/admin/user',[UserController::class,'user'])->name('user');
+    Route::get('/admin/user/destroy/{id}',[UserController::class,'destroyuser'])->name('destroyuser');
+
     Route::get('/admin/useradmin',[UserController::class,'admin'])->name('useradmin');
+    Route::get('/admin/useradmin/destroy/{id}',[UserController::class,'destroyadmin'])->name('destroyadmin');
+    Route::get('/admin/useradmin/add',[UserController::class,'addAdmin'])->name('addadmin');
+    Route::post('admin/useradmin/add',[UserController::class,'storeadmin'])->name('storeadmin');
 
     // Photo
     Route::get('/admin/photo',[PhotoController::class,'index'])->name('photoadmin');

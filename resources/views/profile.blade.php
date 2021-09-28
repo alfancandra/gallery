@@ -18,6 +18,11 @@ if(!empty(Auth::user()->image)){
             <div class="card h-100">
                 <div class="card-body">
                     <div class="account-settings">
+                        @if ($message = Session::get('success'))
+                            <div class="alert alert-success alert-block mb-3 text-center"> 
+                                {{ $message }}
+                            </div>
+                        @endif
                     <form action="{{ route('usr.updateprofile') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                         <div class="user-profile">

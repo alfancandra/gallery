@@ -50,7 +50,7 @@ class ProfileController extends Controller
             }
             
             $user->update();
-            return redirect() -> route('usr.profile') -> with(['error' => 'Password confirmation Not same!']);
+            return redirect() -> route('usr.profile')->with(['success' => 'Success Update Profile']);
         }catch(QueryException $e){
             return redirect() -> route('usr.profile') -> with(['error' => $e->errorInfo]);
         }

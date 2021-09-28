@@ -101,6 +101,7 @@
     <script src="{!! asset('assets/admin/js/pages/dashboard.js') !!}"></script>
 
     <script src="{!! asset('assets/admin/js/main.js') !!}"></script>
+    @stack('js-plugin')
 </body>
 
 </html>

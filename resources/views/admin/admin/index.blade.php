@@ -7,9 +7,14 @@
     <div class="row" id="table-hover-row">
         <div class="col-12">
             <div class="card">
+                @if ($message = Session::get('success'))
+                    <div class="alert alert-success alert-block mb-3"> 
+                        {{ $message }}
+                    </div>
+                @endif
                 <div class="card-header">
                     <h4 class="card-title">Table Admins</h4>
-                    <a class="btn btn-success btn-md mt-3" href="{{ route('adm.addphotoadmin') }}">Add Data</a>
+                    <a class="btn btn-success btn-md mt-3" href="{{ route('adm.addadmin') }}">Add Data</a>
                 </div>
                 
                 <div class="card-content">
@@ -34,7 +39,7 @@
                                     <td style="word-wrap: break-word;width: 300px;">{{ $user->email }}</td>
                                     <td style="word-wrap: break-word;width: 500px;">{{ $user->institusi }}</td>
                                     <td style="width: 150px">
-                                        <a onClick="if(!confirm('Are you sure to delete this photo?')){return false;}" href="" class="btn btn-danger btn-md">Delete</a></td>
+                                        <a onClick="if(!confirm('Are you sure to delete this photo?')){return false;}" href="{{ route('adm.destroyadmin',$user->id) }}" class="btn btn-danger btn-md">Delete</a></td>
                                 </tr>
                                 @endforeach
                             </tbody>
