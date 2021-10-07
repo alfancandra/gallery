@@ -27,8 +27,18 @@ https://templatemo.com/tm-520-highway
 
         <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
     </head>
-
-<body style="background: #151515">
+@php 
+$background = '';
+$color = '';
+if(request()->route()->getName() == 'login' || request()->route()->getName() == 'register' || request()->route()->getName() == 'forgotpassword'){
+    $background = 'bg-image';
+    $color = '';
+}else{
+    $background = '';
+    $color = 'background:#000';
+}
+@endphp
+<body class="{{ $background }}" style="{{ $color }}">
     <nav>
         <div class="logo" style="z-index: -1">
             <a href="{{ url('/') }}">Pameran Arsitektur UAJY</a>

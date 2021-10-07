@@ -19,7 +19,7 @@
                 </div>    
             </div>
         </div>
-        <img src="{!! asset('img/bg.jpg') !!}">
+        <img src="{!! asset('img/bg.jpeg') !!}" class="bg">
     </div>
 
     {{-- MEMBER --}}
