@@ -35,21 +35,24 @@ class PhotoController extends Controller
             'category_id' => 'required'
         ]);
         if($request->hasFile('images')) {
-            $resource = $request->file('images');
-            $name = uniqid() . '_' . time(). '.' .$resource->getClientOriginalName();
-            $resource->move(public_path().'/img/photo/', $name);  
+            foreach($request->file('images') as $file)
+            {
+                $name = uniqid() . '_' . time(). '.' .$file->getClientOriginalName();
+                $file->move(public_path().'/img/photo/', $name);
+                $data[] = $name;
+            }
 
             $file= new Photo();
             $file->title = $request->title;
             $file->deskripsi=$request->deskripsi;
-            $file->images = $name;
+            $file->images = json_encode($data);
             $file->category_id = $request->category_id;
-           
+
             $file->save();
            return redirect()->route('adm.photoadmin')
                         ->with('success','Photo Added successfully');
-        }  
-         
+        }
+
         /// insert setiap request dari form ke dalam database via model
         /// jika menggunakan metode ini, maka nama field dan nama form harus sama
         Photo::create($request->all());
